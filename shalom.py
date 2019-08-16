@@ -13,6 +13,11 @@ class Shalom(object):
 
         def __init__(self, index=6, rest=6):
 
+            """
+            :index - 'El indice donde se moveran los caracteres del mapa de caracteres'
+            :rest - 'Resto que se usara para evitar que se sepa el indice de grado de los caracteres'
+            """
+
 	    self.__start(index=index, rest=rest)
 
         def __call__(self, i, r):
@@ -65,11 +70,19 @@ class Shalom(object):
 
 	def setMapsRandom(self, rang=randint(100, 100000)):
 
+            """
+            :rang - 'Usando el algoritmo de shuffle se colocara al "azar" todos los caracteres del mapa de caracteres'
+            """
+
 	    for _ in xrange(rang):
 
 	        shuffle(self.maps)
 
 	def key(self):
+
+            """
+            Muestra el mapa de caracteres
+            """
 
 	    return(self.maps)
 
@@ -122,6 +135,13 @@ class Shalom(object):
 
 	def encrypt(self, string, jumps):
 
+                """
+                Cifra el 'string' deacuerdo a los 'jumps', usando la siguiente sintaxis: Mensaje: ['m', 'e', 'n', 's', 'a', 'j', 'e'], Saltos (jumps): [5, 10, -5, 4, 9, -9, 6]
+
+                :string - 'El mensaje'
+                :jumps - 'Saltos'
+                """
+
 		new_string = ''
 		lon = 0
                 
@@ -167,9 +187,27 @@ class Shalom(object):
 
                 real_jump = '+%s' % (real_jump)
 
-            return(self.key()[eval('%s%s' % (string,real_jump))])
+            _key = self.key()
+            
+            while (True):
+
+                try:
+
+                    return(_key[eval('%s%s' % (string,real_jump))])
+
+                except IndexError:
+
+                    _key += _key
+
+                    continue
 
 	def decrypt(self, string):
+
+                """
+                Descifra un mensaje cifrado.
+
+                :string - 'El texto cifrado'
+                """
 
 		if not (re.match(r'([\d]+[\(][(\d|\-\d)]+[\)])+', string)):
 
