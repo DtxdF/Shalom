@@ -36,9 +36,17 @@ class Shalom(object):
         
         def hard(self, char='\xff', rang=500):
 
+            """
+            Agrega el caracter :char: deacuerdo al rango :rang: para ampliar el mapa de caracteres y aumentar la seguridad
+            """
+
+            chars = ''
+
             for _ in range(rang):
 
-                self.maps.append(char)
+                chars += char
+
+                self.maps.append(chars)
 
 	def __xrangeStr(self, mn, mx):
 
