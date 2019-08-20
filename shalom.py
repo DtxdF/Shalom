@@ -29,11 +29,16 @@ class Shalom(object):
             if (system() == 'Windows'):
                 maps = ['<', '>', ',', '.', '-', ';', ':', '_', '\xef', '`', '+', '\x87', '\xf9', '^', '*', '\x80', '{', '[', ']', '}', '\xad', '\'', '\xa7', '\xa6', '\xa8', '?', '!', '"', '\xfa', '$', '%', '&', '/', '(', ')', '=', '\\', '|', '@', '#', '~', '?', '\xaa', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', '\xa4', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '\xa5', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
             else:
-                maps = ['\xc2\xb4', '\xc3\xa7', '\xc2\xa8', '\xc2\xba', '\xc2\xaa', '\xc2\xb7', '\xc2\xbd', '\xc2\xac', '\xc2\xbf', '\xc2\xa1', '>', '<', '\\', ',', '.', '-', ';', ':', '_', '`', '+', '^', '*', '!', '|', "'", '"', '@', '#', '$', '~', '%', '&', '/', '{', '(', '[', ')', ']', '=', '}', '?', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', '\xc3\xb1', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '\xc3\x91', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-            self.maps = maps
+                maps = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '\xc2\xb4', '\xc3\xa7', '\xc2\xa8', '\xc2\xba', '\xc2\xaa', '\xc2\xb7', '\xc2\xbd', '\xc2\xac', '\xc2\xbf', '\xc2\xa1', '>', '<', '\\', ',', '.', '-', ';', ':', '_', '`', '+', '^', '*', '!', '|', "'", '"', '@', '#', '$', '~', '%', '&', '/', '{', '(', '[', ')', ']', '=', '}', '?', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', '\xc3\xb1', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '\xc3\x91', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 	    self.rest = rest
 	    self.index = int(index) # Convertimos a un entero
-	    self.__createData(maps)
+            self.maps = self.__order(maps)
+        
+        def hard(self, char='\xff', rang=500):
+
+            for _ in range(rang):
+
+                self.maps.append(char)
 
 	def __xrangeStr(self, mn, mx):
 
@@ -60,13 +65,6 @@ class Shalom(object):
                         b.reverse()
 
                         return(a+b)
-
-	def __createData(self, abc):
-
-            abc = self.__order(abc)
-            num_list = self.__order(self.__xrangeStr(0, 10))
-
-            return(abc + num_list)
 
 	def setMapsRandom(self, rang=randint(100, 100000)):
 
