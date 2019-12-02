@@ -1,29 +1,33 @@
-# Shalom
+# Shalom (versión 2)
 
-> Un algoritmo de cifrado hecho en Python usando saltos en un mapa de caracteres
+> Un algoritmo de cifrado simétrico que se translada a una simple librería
 
 ## Instalación
 
 ```
 git clone https://github.com/DtxdF/Shalom.git
 cd Shalom
-python
+python3
 ```
 
 ## Uso
 
 ```
-from shalom import Shalom
-shalom = Shalom()
-text = shalom.encrypt(['H', 'o', 'l', 'a', '!'], [-4, 9, 15, -7, -5])
-print('Encrypt: ' + text)
+from shalom_v2 import Shalom
+shalom = Shalom(index=-6)
+text = shalom.encrypt('Hola!', [-4, 9, 15, -7, -5])
+print('Encrypt: ' + str(text))
+Encrypt: [(74, 10), (126, -3), (129, -9), (96, 13), (34, 11)]
 print('Decrypt: ' + shalom.decrypt(text))
+Decrypt: Hola!
 ```
 
-*Shalom acepta dos parametros iniciales y dos de llamado*
+*Shalom acepta tres parámetros iniciales*
 
 ```
-Shalom(index=..., rest=...)
+Shalom(password=..., index=..., rest=...)
 ```
 
 **Nota: ** Una ayuda extra puede ser help(...) de Python.
+
+~ DtxdF (DtxdF@protonmail.com)
