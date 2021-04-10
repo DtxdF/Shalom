@@ -30,4 +30,6 @@ Shalom(password=..., index=..., rest=...)
 
 **Nota: ** Una ayuda extra puede ser help(...) de Python.
 
+**Importante**: Tanto la librería como el algoritmo son demostrativos.
+
 ~ DtxdF (DtxdF@protonmail.com)
